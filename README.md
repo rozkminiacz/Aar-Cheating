@@ -2,7 +2,7 @@
 Example of how to use aar2jar plugin. This plugin extracts java classes from *.aar file so you can pretend that resources bundled in aar don't exists.
 
 ```gradle
-    classpath "gradle.plugin.com.stepango.aar2jar:aar2jar:0.6"
+classpath "gradle.plugin.com.stepango.aar2jar:aar2jar:0.6"
 ```
 
 ```gradle
