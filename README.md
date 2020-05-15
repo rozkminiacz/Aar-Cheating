@@ -22,3 +22,48 @@ Basically I wanted to run fast unit tests on classes with android imports (espec
 1. Clone repository
 2. Run `./gradlew test`
 3. Profit
+
+
+### Class under test:
+```kotlin
+package tech.michalik.cheating
+
+import androidx.databinding.Bindable
+import tech.michalik.mvx.BaseViewModel
+import tech.michalik.mvx.observable
+import tech.michalik.mvx.onChange
+
+class SomeViewModel : BaseViewModel() {
+    @get:Bindable
+    var bindableProperty: String by observable("", 117)
+
+    var textReversed: String = ""
+
+    init {
+        onChange(117) {
+            textReversed = bindableProperty.reversed()
+        }
+    }
+}
+
+```
+
+### Test:
+```kotlin
+package tech.michalik.cheating
+
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
+
+
+class SomeViewModelTest {
+    @Test
+    fun `it actually works`() {
+        val viewModel = SomeViewModel()
+        viewModel.bindableProperty = "other"
+
+        assertEquals("rehto", viewModel.textReversed)
+    }
+}
+
+```
