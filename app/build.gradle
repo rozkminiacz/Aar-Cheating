@@ -1,0 +1,37 @@
+apply plugin: "kotlin"
+apply plugin: "com.stepango.aar2jar"
+
+test {
+  useJUnitPlatform()
+}
+
+dependencies {
+  implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+  implementationAar "androidx.lifecycle:lifecycle-viewmodel:2.1.0"
+  implementationAar "androidx.databinding:library:3.2.0-alpha11"
+  implementationAar "androidx.databinding:adapters:3.2.0-alpha11"
+  implementationAar "androidx.databinding:baseLibrary:3.2.0-alpha11"
+  implementationAar 'com.github.rozkminiacz.MVX:mvx:1.0.1.1'
+  implementationAar 'com.github.rozkminiacz.MVX:mvx-extensions:1.0.1.1'
+
+  testImplementationAar "androidx.lifecycle:lifecycle-viewmodel:2.1.0"
+  testImplementationAar "androidx.databinding:library:3.2.0-alpha11"
+  testImplementationAar "androidx.databinding:adapters:3.2.0-alpha11"
+  testImplementationAar "androidx.databinding:baseLibrary:3.2.0-alpha11"
+  testImplementationAar 'com.github.rozkminiacz.MVX:mvx:1.0.1.1'
+  testImplementationAar 'com.github.rozkminiacz.MVX:mvx-extensions:1.0.1.1'
+
+  // Unit testing dependencies
+  testImplementation unitTest.junit5.values()
+  testRuntimeOnly unitTest.junit5Engines.values()
+
+  testImplementation unitTest.mockito.values()
+
+  testImplementation unitTest.assertions.values()
+
+}
+
+repositories {
+  mavenCentral()
+}
